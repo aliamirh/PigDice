@@ -19,7 +19,7 @@ function Player(name, turnScore, totalScore, turn) {
 Player.prototype.rollone = function() {
   if (this.roll === 1) {
     this.turnScore = 0;
-    alert("You fucking suck at this game!");
+    alert("You suck! Pass the damn dice.");
   } else {
     this.turnScore += this.roll
   }
@@ -32,21 +32,21 @@ Player.prototype.hold = function () {
 }
 
 
-//
+///////// user interface ////////
 // var totalScore = ;
 
 var turnScore  = 0;
+var player1 = new Player()
+var player2 = new Player()
 
 $(function() {
   $("#rollBtn").click(function(event) {
-      event.preventDefault();
-
-      var points = parseInt(randomNumber());
-      console.log("points: "+points);
-
-      turnScore += points;
-      console.log("turnScore: " + turnScore);
-      $("turnOut").text(points);
+    event.preventDefault();
+    var points = parseInt(randomNumber());
+    turnScore += points;
+    $("#rollOut").text("Current Roll: " + points);
+    $("#turnOut").text("Turn Score: " + turnScore);
+    player1.rollone();
 
   })
 })
