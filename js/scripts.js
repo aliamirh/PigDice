@@ -29,6 +29,7 @@ Player.prototype.rollone = function(randomNumber) {
 //////// hold /////////
 Player.prototype.hold = function (turnScore) {
   this.totalScore += this.turnScore;
+  console.log(this.totalScore);
   this.turnScore = 0;
 }
 
@@ -40,50 +41,23 @@ Player.prototype.hold = function (turnScore) {
 
 $(function() {
 
-
   var turnScore  = 0;
   var total1 = 0
-
-
-  // $("#addPlay").submit(function(event){
-  //   event.preventDefault();
-  //   player1.name = $("#user1In").val();
-  //   player2.name = $("#user2In").val();
-  //
-  //   console.log("player 1 " + player1.name);
-  // })
-
-
-
 
   $("#rollBtn1").click(function(event) {
     event.preventDefault();
 
     player1.roll = parseInt(randomNumber());
-
-
-
     player1.rollone(player1.roll);
-
-    // console.log(player1.roll);
-    // if (roll === 1) {
-    //   turnScore = 0;
-    //
-    //   alert("You suck! Pass the fucking dice bro.");
-    // } else {
-    //   turnScore += points;
-    // }
-
 
     $("#rollOut1").text("Current Roll: " + parseInt(player1.roll));
     $("#turnOut1").text("Turn Score: " + parseInt(player1.turnScore));
   });
 
-
   $("#holdBtn1").click(function(event) {
     event.preventDefault();
-    player1.hold(player1.turnScore)
+    player1.hold(player1.turnScore);
 
-    $("#totalScore1").text("Player one score: " + player1.turnScore);
+    $("#totalScore1").text("Player one score: " + parseInt(player1.totalScore));
   });
 });
