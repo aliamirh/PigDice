@@ -1,32 +1,33 @@
 /////////Business Logic//////////
-var player1 = ""
-var player2 = ""
+var player1 = new Player();
+var player2 = new Player();
 
 var randomNumber = function() {
   return Math.floor(Math.random() * 6) + 1;
 }
 
-function Player(name, turnScore, totalScore, turn) {
-  this.name = name;
+function Player(turnScore, totalScore, roll) {
+
   this.turnScore = 0;
   this.totalScore = 0;
   this.roll = 0;
-  this.turn = turn;
+
 }
 
 
 ///////////check1//////////
-Player.prototype.rollone = function() {
-  if (this.roll === 1) {
+Player.prototype.rollone = function(randomNumber) {
+  if (randomNumber === 1) {
     this.turnScore = 0;
     alert("You suck! Pass the damn dice.");
   } else {
     this.turnScore += this.roll
+    console.log(this.turnScore);
   }
 }
 
 //////// hold /////////
-Player.prototype.hold = function () {
+Player.prototype.hold = function (turnScore) {
   this.totalScore += this.turnScore;
   this.turnScore = 0;
 }
@@ -35,18 +36,54 @@ Player.prototype.hold = function () {
 ///////// user interface ////////
 // var totalScore = ;
 
-var turnScore  = 0;
-var player1 = new Player()
-var player2 = new Player()
+
 
 $(function() {
-  $("#rollBtn").click(function(event) {
-    event.preventDefault();
-    var points = parseInt(randomNumber());
-    turnScore += points;
-    $("#rollOut").text("Current Roll: " + points);
-    $("#turnOut").text("Turn Score: " + turnScore);
-    player1.rollone();
 
-  })
-})
+
+  var turnScore  = 0;
+  var total1 = 0
+
+
+  // $("#addPlay").submit(function(event){
+  //   event.preventDefault();
+  //   player1.name = $("#user1In").val();
+  //   player2.name = $("#user2In").val();
+  //
+  //   console.log("player 1 " + player1.name);
+  // })
+
+
+
+
+  $("#rollBtn1").click(function(event) {
+    event.preventDefault();
+
+    player1.roll = parseInt(randomNumber());
+
+
+
+    player1.rollone(player1.roll);
+
+    // console.log(player1.roll);
+    // if (roll === 1) {
+    //   turnScore = 0;
+    //
+    //   alert("You suck! Pass the fucking dice bro.");
+    // } else {
+    //   turnScore += points;
+    // }
+
+
+    $("#rollOut1").text("Current Roll: " + parseInt(player1.roll));
+    $("#turnOut1").text("Turn Score: " + parseInt(player1.turnScore));
+  });
+
+
+  $("#holdBtn1").click(function(event) {
+    event.preventDefault();
+    player1.hold(player1.turnScore)
+
+    $("#totalScore1").text("Player one score: " + player1.turnScore);
+  });
+});

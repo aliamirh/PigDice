@@ -8,28 +8,32 @@
     <title>Pig Dice</title>
   </head>
   <body>
-    <div class="container" id="userInputDiv">
+    <!-- <div class="container" id="userInputDiv">
       <form id="userInputForm" class="form-control" action="index.html" method="post">
-        <input type="text" placeholder="Username 1" name="" value="" id="user1In">
-        <input type="text" placeholder="Username 2" name="" value="" id="user2In">
-        <button type="submit" name="button" class="btn btn-dark">Add Players to the Game</button>
+        <input type="text" placeholder="Username 1" id="user1In">
+        <input type="text" placeholder="Username 2" id="user2In">
+        <button id="addPlay" type="submit" name="button" class="btn btn-dark">Add Players to the Game</button>
       </form>
-    </div>
+    </div> -->
     <div class="container" id="gameDiv">
-
-
-      <button id="rollBtn" type="submit" class="btn btn-dark" name="button" onclick="">Roll the Dice!</button>
-      <button id="holdBtn" type="submit" class="btn btn-dark" name="button" onclick="">Hold!</button>
+      <button id="rollBtn1" type="submit" class="btn btn-dark" name="button" onclick="">Roll the Dice!</button>
+      <button id="holdBtn1" type="submit" class="btn btn-dark" name="button" onclick="">Hold!</button>
     </div>
     <br>
     <br>
     <br>
-    <div class="">
-      <p id="rollOut"></p>
-      <p id="totalOut"></p>
-      <p id="turnOut"></p>
+    <div id="player1game">
+      <p id="rollOut1"></p>
+      <p id="turnOut1"></p>
+    </div>
+    <div id="player2game">
+      <p id="rollOut2"></p>
+      <p id="turnOut2"></p>
+    </div>
+    <div class="" id="gameStats">
+      <p id="totalScore1"></p>
+      <p id="totalScore2"></p>
 
     </div>
-
   </body>
 </html>
