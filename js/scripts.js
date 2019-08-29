@@ -14,11 +14,9 @@ var winCon  = function() {if(player1.totalScore >=100){
 }
 
 function Player(turnScore, totalScore, roll) {
-
   this.turnScore = 0;
   this.totalScore = 0;
   this.roll = 0;
-
 }
 
 
